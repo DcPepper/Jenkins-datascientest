@@ -10,7 +10,8 @@ stages {
             steps {
                 script {
                 sh '''
-                 docker build -t $DOCKER_ID/$DOCKER_IMAGE:$DOCKER_TAG .
+                docker stop jenkin || true && docker rm -f jenkin || true
+                docker build -t $DOCKER_ID/$DOCKER_IMAGE:$DOCKER_TAG .
                 sleep 6
                 '''
                 }
